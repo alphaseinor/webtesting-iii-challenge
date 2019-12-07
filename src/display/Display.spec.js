@@ -28,5 +28,10 @@ describe('<Display />', () => {
     expect(getByText(/unlocked/i))
   })
 
- 
+  test('if locked or closed then red LED', async () => {
+    const { findByText } = render(<Display closed={true} locked={true} />)
+    const lockedDisplay = await findByText(/locked/i)
+    expect(lockedDisplay.className).toMatch('red-led')
+  })
+
 })
